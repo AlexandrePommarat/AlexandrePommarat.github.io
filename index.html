@@ -3,8 +3,8 @@
     <head>
 		<title>App'iculture</title>
 		<meta charset="utf-8">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
-		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	</head>
 	<body>
         <h1>Site d'App'iculture - Back Office</h1>
@@ -27,6 +27,7 @@
 
             <section>
                     <h1>Onglet - Rucher</h1>
+                    <!--
                     <p>
                         Permet de créer une ruche en renseignant <br>
                         un id<br>
@@ -40,6 +41,8 @@
                         
                         Permet d'éditer des ruches : id, nb de ruches, descriptif d'implémentation ou la fréquence des visites
                     </p>
+                    -->
+                    <nouv_rucher></nouv_rucher>
             </section>
         </div>
 
@@ -48,11 +51,25 @@
             <div>
                 Frequence des visites : <input v-model="freq_visite" type="number" min="0" name=""> <br>
 
-        
                 <a role="button" v-on:click="validate" class="btn btn-success">Valider</a><br>
 
                 <a role="button" v-on:click="save_json" class="btn btn-primary">Sauvegarder</a> 
                 <a role="button" v-on:click="import_json" class="btn btn-secondary">Importer</a>
+            </div>
+        </template>
+
+        <template id="nouv_rucher-template">
+            <div>
+                <h2>Nouvelle ruche</h2>
+
+                Identifiant : <input type="text" v-model="ruche_id"/> <br>
+                Nombre de ruchers : <input type="number" v-model="ruche_nb" min="0"/> <br>
+                Descriptif : <textarea v-model="ruche_desc" placeholder="Description de la ruche ..."
+                    rows="5"></textarea> <br>
+                Fréquence des visites du rucher par semaine  : <input min="0" type="number" v-model="ruche_freqvisite"/> <br>
+
+                <a role="button" v-on:click="validate" class="btn btn-success">Valider</a> <br>
+                <a role="button" v-on:click="check" class="btn btn-primary">Check</a> <br>
             </div>
         </template>
 
